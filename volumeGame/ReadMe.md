@@ -4,4 +4,5 @@ The game has various ml sized cups and a 1 litre bucket. The task is to figure o
 
 Click on the smaller cups to pour the water to a 1 litre bucket. The game keeps track of number of times the cup is poured also use the __Answer__ button to see the volumes of the smaller cups. You can replay the game multiple times with more challenging constraints !
 
-![image](https://github.com/user-attachments/assets/397a48a4-9ed3-4f70-a326-aa35515aed84)
+![image](https://github.com/user-attachments/assets/e60c102c-0581-4bff-9708-9b98d7663655)
+
