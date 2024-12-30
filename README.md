@@ -1,2 +1,2 @@
 # InteractiveLearning
-Repository to build games that make concepts more interctive
+Repository to build games that make concepts more interctive and fun
