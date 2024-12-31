@@ -11,19 +11,21 @@ let canvasPosition = canvas.getBoundingClientRect();
 
 console.log(canvasPosition)
 
-canvas.width = 950; //500 px
-canvas.height = 500; // 300 px
+canvas.width = 600; //600 px
+canvas.height = 300; // 300 px
 
 
-const startPositionX = 40;
-const startPositionY = canvas.height - 60;
-const containerHeight = 180;
-const containerWidth = 60;
-const containerSpacing = 70;
-let containerSize = [.2, .3, .4, .5, .6, .8];
+const startPositionX = 15;
+const startPositionY = canvas.height - 30;
+const containerHeight = 75;
+const containerWidth = 40;
+const containerSpacing = 45;
+let containerSizes = [[.3, .4, .5, .6, .8],[.2, .4, .6, .7, .8],[0.2,0.6,0.8],[0.3,0.6,0.8]];
+let gameLevel = 0;
+let containerSize = containerSizes[gameLevel] // first game
 let containerCount = containerSize.length;
 const containerMouthAngle = 10 * Math.PI/180;
-let pouringHeight = -35;
+let pouringHeight = -10;
 let animateRunning = false;
 let animationStep = 0;
 let containerIdClicked = -1;
@@ -153,9 +155,9 @@ class Container{
             ctx.fillText("1 Litre",this.bl[0],this.bl[1]+25);
         }
         if(showAnswer && this.id>0){
-            ctx.font = "20px Bold Courier New";
+            ctx.font = "17px Bold Courier New";
             ctx.fillStyle = "#8e44ad";
-            ctx.fillText(this.volumes+" ml",this.tl[0]+15,this.bl[1]-this.height);
+            ctx.fillText(this.volumes+" ml",this.tl[0],this.bl[1]-this.height);
         }
 
     }
@@ -289,7 +291,8 @@ resetButtonElement.addEventListener("click", ()=>{
     game.newGame();
 });
 newButtonElement.addEventListener("click", ()=>{
-    containerSize = [.2, .4, .6, .7, .8];
+    gameLevel = (gameLevel + 1)% (containerSizes.length);
+    containerSize = containerSizes[gameLevel];
     containerCount = containerSize.length;
     game.newGame();
 });
