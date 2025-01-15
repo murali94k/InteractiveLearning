@@ -12,8 +12,8 @@ const textButtonElement = document.getElementById('text-btn');
 
 // Canvas size
 let canvasPosition = canvas.getBoundingClientRect();
-canvas.width = 800;
-canvas.height = 480;
+canvas.width = 700;
+canvas.height = 420;
 
 
 // Initializing Variables
@@ -21,8 +21,8 @@ const colorPallet = ["#ffffff","#DDA853","#85c1e9","#73c6b6","#e2f311"];
 const palletSize = colorPallet.length;
 const columns = 4;
 const rows = 4;
-const boxWidth = 80;
-const boxHeight = 80;
+const boxWidth = 70;
+const boxHeight = 70;
 
 const gridLeftX = 0;
 const gridLeftY = boxWidth;// top margin space to rotate

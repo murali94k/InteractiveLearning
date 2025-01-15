@@ -14,8 +14,8 @@
         vertical-align: top;
         color: "black";
         font-weight: 600;
-        font-size: 20px;
-        width: 180px;
+        font-size: 18px;
+        width: 140px;
         border: 0;
         padding: 5px;
         margin: 5px;
@@ -34,7 +34,7 @@
     #text-btn{
         font-weight: 500;
         font-size: 18px;
-        width: 200px;
+        width: 140px;
         background: #e2f311;
     }
 
