@@ -12,8 +12,8 @@ const textButtonElement = document.getElementById('text-btn');
 
 // Canvas size
 let canvasPosition = canvas.getBoundingClientRect();
-canvas.width = 500;
-canvas.height = 320;
+canvas.width = 900;
+canvas.height = 480;
 
 
 // Initializing Variables
@@ -21,8 +21,8 @@ const colorPallet = ["#ffffff","#DDA853","#85c1e9","#73c6b6","#e2f311"];
 const palletSize = colorPallet.length;
 const columns = 4;
 const rows = 4;
-const boxWidth = 50;
-const boxHeight = 50;
+const boxWidth = 70;
+const boxHeight = 70;
 
 const gridLeftX = 0;
 const gridLeftY = boxWidth;// top margin space to rotate
@@ -31,7 +31,7 @@ const gridRightY = boxWidth; // top margin space to rotate
 
 let qTurnClicked = 0;
 let rotationSpeed = 2;
-
+let turnAngle = -90;
 
 
 // MOUSE Clicks
@@ -79,7 +79,9 @@ class Box{
          && (mouseY>this.y) && (mouseY < (this.y+boxHeight)) ){
             this.clickCount = (this.clickCount+1)%palletSize
             this.fillColor = colorPallet[this.clickCount];
-            qTurnClicked = 0;
+            qTurnClicked = 0; // once input grids are modified remove solution grid
+            turnAngle = -90;
+            textButtonElement.innerHTML = "---";
             return true;
          }
         return false;
@@ -143,15 +145,15 @@ class Game{
     resetGame(){
         textButtonElement.innerHTML = "---";
         qTurnClicked = 0;
-        this.turnAngle = 0;
+        turnAngle = -90;
         mouse.enable = true;
         this.gridLeft = new Grid(gridLeftX, gridLeftY);
         this.gridRight = new Grid(gridRightX, gridRightY);
     }
     updateGame(){
         this.gridLeft.updateGrid();// checks for the tail clicks
-        this.turnAngle = Math.min(this.turnAngle + rotationSpeed , qTurnClicked*90);
         if(qTurnClicked){// copy the leftGrid box colors
+            turnAngle = Math.min(turnAngle + rotationSpeed , qTurnClicked*90);
             for(let i=0; i<rows; i++){
                 for(let j=0; j<columns; j++){
                     this.gridRight.boxes[i][j].fillColor = this.gridLeft.boxes[i][j].fillColor;
@@ -167,13 +169,13 @@ class Game{
             let translatePosX = gridRightX + (columns*boxWidth)/2;
             let translatePosY = gridRightY + (rows*boxHeight)/2;
             ctx.translate(translatePosX, translatePosY);
-            ctx.rotate((this.turnAngle*Math.PI)/180);
+            ctx.rotate((Math.max(turnAngle,0)*Math.PI)/180);
 
             //Draw right Grids
             this.gridRight.drawGrid(translatePosX, translatePosY);
 
             //Rotate Back the canvas around right grid center
-            ctx.rotate((-this.turnAngle*Math.PI)/180);
+            ctx.rotate(-(Math.max(turnAngle,0)*Math.PI)/180);
             ctx.translate(-translatePosX, -translatePosY);
         }
     }

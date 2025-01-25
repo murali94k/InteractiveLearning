@@ -1,0 +1,52 @@
+* {
+    margin:5px;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+#canvas1 {
+    margin: 0;
+    border:0px solid #000000;
+}
+
+/* Hide the default radio button */
+input[type="radio"] {
+  display: none;
+}
+
+/* Style for the label that will represent the radio button */
+.radio-label {
+  display: inline-block;
+  font-weight: 500;
+  font-size: 25px;
+  margin-bottom: 5px;
+  margin-right: 10px;
+  padding: 5px 20px;
+  border: 2px solid #ddd;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+/* Style when the radio button is checked */
+input[type="radio"]:checked + .radio-label {
+  border-color: #009688;
+  background-color: #009688;
+  color: white;
+}
+.btn{
+        display: inline-block;
+        vertical-align: top;
+        color: #000000;
+        font-weight: 500;
+         font-size: 25px;
+         margin-bottom: 5px;
+         margin-right: 10px;
+         padding: 5px 20px;
+         border: 2px solid #ddd;
+         border-radius: 15px;
+         cursor: pointer;
+    }
+    #new-btn{
+        background: #a569bd;
+        font-weight: 500;

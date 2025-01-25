@@ -1,43 +1,33 @@
 * {
-    margin:10px;
+    margin:5px;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
 
 #canvas1 {
-    margin: 5;
+    margin: 0;
     border:0px solid #000000;
 }
+
 .btn{
         display: inline-block;
         vertical-align: top;
         color: "black";
-        font-weight: 600;
-        font-size: 18px;
-        width: 120px;
+        font-weight: 500;
+        font-size: 25px;
+        width: 200px;
         border: 0;
         padding: 5px;
         margin: 5px;
         border-radius: 6px;
         cursor: pointer;
     }
-    #quarter-btn{
-        background: #85c1e9 ;
-    }
-    #half-btn{
-        background: #73c6b6 ;
+    #new-btn{
+        background: #f4d03f ;
+        font-weight: 700;
     }
     #reset-btn{
-        background: #d7bde2;
-    }
-    #text-btn{
+        background: #f0b27a;
         font-weight: 700;
-        font-size: 18px;
-        width: 190px;
-        background: #ffffff;
     }
-
-
-
-
