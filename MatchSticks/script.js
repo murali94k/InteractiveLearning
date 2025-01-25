@@ -8,13 +8,16 @@ const newButtonElement = document.getElementById('new-btn');
 
 let canvasPosition = canvas.getBoundingClientRect();
 
-const windowPadding = 100;
-canvas.width = window.innerWidth-windowPadding; //600 px
-canvas.height = window.innerHeight-windowPadding; // 300 px
+
+const canvasWidth =  window.innerWidth;
+const canvasHeight =  window.innerHeight/1.2
+
+canvas.width = canvasWidth; //600 px
+canvas.height = canvasHeight; // 300 px
 
 // Variables
-const stickWidth = canvas.width/10;
-const stickHeight = canvas.height/25;
+const stickWidth = canvasWidth/8;
+const stickHeight = canvasHeight/25;
 const stickCount = 10;
 const headRatio = 0.1;
 
