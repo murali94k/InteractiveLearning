@@ -11,15 +11,18 @@ let canvasPosition = canvas.getBoundingClientRect();
 
 console.log(canvasPosition)
 
-canvas.width = 600; //600 px
-canvas.height = 300; // 300 px
+const canvasWidth =  window.innerWidth;
+const canvasHeight =  window.innerHeight/1.2;
+canvas.width = canvasWidth; //600 px
+canvas.height = canvasHeight; // 300 px
 
 
-const startPositionX = 15;
-const startPositionY = canvas.height - 30;
-const containerHeight = 75;
-const containerWidth = 40;
-const containerSpacing = 45;
+
+const containerHeight = canvasHeight/3;
+const containerWidth = containerHeight/2;
+const startPositionX = 0.5*containerWidth;
+const startPositionY = canvasHeight-canvasHeight/10;
+const containerSpacing = 0.8*containerWidth;
 let containerSizes = [[.3, .4, .5, .6, .8],[.2, .4, .6, .7, .8],[0.2,0.6,0.8],[0.3,0.6,0.8]];
 let gameLevel = 0;
 let containerSize = containerSizes[gameLevel] // first game
