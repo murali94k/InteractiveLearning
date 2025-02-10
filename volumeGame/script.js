@@ -11,7 +11,7 @@ let canvasPosition = canvas.getBoundingClientRect();
 
 console.log(canvasPosition)
 
-const canvasWidth =  window.innerWidth;
+const canvasWidth =  window.innerWidth/1.02;
 const canvasHeight =  window.innerHeight/1.2;
 canvas.width = canvasWidth; //600 px
 canvas.height = canvasHeight; // 300 px
@@ -23,7 +23,10 @@ const containerWidth = containerHeight/2;
 const startPositionX = 0.5*containerWidth;
 const startPositionY = canvasHeight-canvasHeight/10;
 const containerSpacing = 0.8*containerWidth;
-let containerSizes = [[.3, .4, .5, .6, .8],[.2, .4, .6, .7, .8],[0.2,0.6,0.8],[0.3,0.6,0.8]];
+const containerNames = ["", "A", "B", "C", "D", "E", "F"];
+const waterMarkingCounts = 2;
+
+let containerSizes = [[.3, .4, .5, .6, .8],[.2, .4, .6, .7, .8],[0.2,0.6,0.8],[0.3,0.6,0.8], [0.15, 0.35, 0.75, 0.85] ];
 let gameLevel = 0;
 let containerSize = containerSizes[gameLevel] // first game
 let containerCount = containerSize.length;
@@ -100,6 +103,10 @@ class Container{
         this.wtr = [this.startPositionX+this.width+(Math.tan(containerMouthAngle)*this.height*this.waterLevel), this.startPositionY-(this.height*this.waterLevel)];
     }
     drawContainer(){
+
+        ctx.textBaseline = "middle";
+        ctx.textAlign = "center";
+
         // Start a new Path for container
 
         ctx.beginPath();
@@ -138,30 +145,60 @@ class Container{
         ctx.ellipse(this.startPositionX+this.width/2-translatePosX, this.startPositionY-this.height-translatePosY,
         this.width/2+(Math.tan(containerMouthAngle)*this.height), 6, Math.PI , 0, 2 * Math.PI);
         ctx.fill();
+        ctx.closePath();
+
+        // Draw water markings for 1 liter bucket
+        if(this.id==0){
+            ctx.strokeStyle = "#2e86c1";
+            ctx.globalAlpha = 0.3;
+            for(let i=0; i<waterMarkingCounts; i++){
+                ctx.beginPath();
+                ctx.lineWidth = 2;
+                const markingHeight = this.height/waterMarkingCounts*i;
+                ctx.moveTo(this.bl[0]-(Math.tan(containerMouthAngle)*markingHeight)-translatePosX, this.startPositionY-markingHeight-translatePosY);
+                ctx.lineTo(this.br[0]+(Math.tan(containerMouthAngle)*markingHeight)-translatePosX, this.startPositionY-markingHeight-translatePosY);
+                ctx.stroke();
+                ctx.closePath();
+            }
+            ctx.globalAlpha = 1;
+        }
+
 
         // Translate back the ctx
         if(this.rotate){
             ctx.rotate(this.theta*Math.PI/180);
             ctx.translate(-translatePosX, -translatePosY);
         }
+        // Name 1Litre Bucket
         ctx.fillStyle = "#ca6f1e";
         ctx.font = "32px Bold Courier New";
         ctx.fillText(this.text,canvasPosition.left+canvas.width/3,canvasPosition.top+canvas.height/3);
 
+        // Name the Buckets
+        ctx.fillStyle = "#000000";
+        ctx.font = "30px Bold Courier New";
+        ctx.fillText(containerNames[this.id],this.bl[0]+containerWidth/2,this.bl[1]-containerWidth/5);
 
         if(this.id>0){
-        ctx.fillStyle = "#a569bd";
-        ctx.font = "20px Bold Courier New";
-        ctx.fillText(this.clickCounts,this.bl[0]+this.width/3,this.bl[1]+25);}
+        ctx.fillStyle = "#45b39d";
+        ctx.font = "25px Bold Courier New";
+        ctx.fillText(this.clickCounts,this.bl[0]+this.width/2,this.bl[1]+25);}
         else{
             ctx.font = "20px Bold Courier New";
-            ctx.fillText("1 Litre",this.bl[0],this.bl[1]+25);
+            ctx.fillText("1 Litre",this.bl[0]+containerWidth/2,this.bl[1]+25);
         }
         if(showAnswer && this.id>0){
-            ctx.font = "17px Bold Courier New";
-            ctx.fillStyle = "#8e44ad";
-            ctx.fillText(this.volumes+" ml",this.tl[0],this.bl[1]-this.height);
+            ctx.font = "25px Bold Courier New";
+            ctx.fillStyle = "#000000";
+            ctx.fillText(this.volumes+" ml",this.bl[0]+containerWidth/2,this.bl[1]-this.height-25);
         }
+
+        // Game Level Indicator
+        ctx.globalAlpha = 0.1;
+        ctx.fillStyle = "#5b2c6f";
+        ctx.font = "50px Bold Courier New";
+        ctx.fillText("GAME - "+(gameLevel+1), canvasWidth/2, canvasHeight/2);
+        ctx.globalAlpha = 1;
 
     }
 
@@ -299,6 +336,7 @@ newButtonElement.addEventListener("click", ()=>{
     containerCount = containerSize.length;
     game.newGame();
 });
+
 answerButtonElement.addEventListener("click", ()=>{
     for(let i=1; i<=containerCount; i++){
         game.containers[i].volumes = containerSize[i-1]*1000;
