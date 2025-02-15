@@ -26,7 +26,7 @@ const containerSpacing = 0.8*containerWidth;
 const containerNames = ["", "A", "B", "C", "D", "E", "F"];
 const waterMarkingCounts = 2;
 
-let containerSizes = [[.3, .4, .5, .6, .8],[.2, .4, .6, .7, .8],[0.2,0.6,0.8],[0.3,0.6,0.8], [0.15, 0.35, 0.75, 0.85] ];
+let containerSizes = [[.2, .4, .5, .6, .8],[.2, .4, .6, .7, .8],[0.2,0.6,0.8],[0.3,0.6,0.8], [0.15, 0.35, 0.75, 0.85] ];
 let gameLevel = 0;
 let containerSize = containerSizes[gameLevel] // first game
 let containerCount = containerSize.length;
