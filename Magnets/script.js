@@ -8,12 +8,12 @@ const newButtonElement = document.getElementById('new-btn');
 
 let canvasPosition = canvas.getBoundingClientRect();
 
-
-const canvasWidth =   window.innerWidth;
-const canvasHeight =  window.innerHeight;
-
-canvas.width = canvasWidth; //600 px
-canvas.height = canvasHeight; // 300 px
+//
+//const canvasWidth =   window.innerWidth;
+//const canvasHeight =  window.innerHeight;
+//
+//canvas.width = canvasWidth; //600 px
+//canvas.height = canvasHeight; // 300 px
 
 const r = new rive.Rive({
         src: "./Assets/nail.riv",
