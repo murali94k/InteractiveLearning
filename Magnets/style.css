@@ -9,3 +9,26 @@
     margin: 0;
     border:0px solid #000000;
 }
+
+.btn{
+        display: inline-block;
+        vertical-align: top;
+        color: "black";
+        font-weight: 300;
+        font-size: 18px;
+        width: 100px;
+        border: 0;
+        padding: 5px;
+        margin: 5px;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+    #reset-btn{
+        background: #abebc6;
+    }
+    #set-btn{
+        background: #f0b27a;
+    }
+    #info-btn{
+        background: #f4d03f ;
+    }
