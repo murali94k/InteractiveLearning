@@ -1,8 +1,8 @@
 const canvas = document.getElementById('canvas1');
 const ctx = canvas.getContext('2d');
 
-canvas.width = 300;
-canvas.height = 300;
+canvas.width = 50;
+canvas.height = 50;
 
 let canvasPosition = canvas.getBoundingClientRect();
 
