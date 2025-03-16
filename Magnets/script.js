@@ -5,10 +5,6 @@ let canvasPosition = canvas.getBoundingClientRect();
 
 console.log(Math.floor(window.innerWidth), Math.floor(window.innerHeight), window.devicePixelRatio);
 
-
-canvas.width = Math.floor(Math.min(window.innerWidth, window.innerHeight));
-canvas.height = Math.floor(Math.min(window.innerWidth, window.innerHeight));
-
 const r = new rive.Rive({
         src: "./Assets/nail.riv",
         // OR the path to a discoverable and public Rive asset
@@ -17,16 +13,11 @@ const r = new rive.Rive({
         autoplay: true,
         // artboard: "Arboard", // Optional. If not supplied the default is selected
         stateMachines: "State Machine 1",
-        fit: rive.Fit.cover,
-        onLoad: () => {
-          r.resizeDrawingSurfaceToCanvas();
-        },
-
     });
-r.resizeDrawingSurfaceToCanvas();
+
 function resizeCanvas() {
-  canvas.width = Math.floor(Math.min(window.innerWidth, window.innerHeight));
-  canvas.height = Math.floor(Math.min(window.innerWidth, window.innerHeight));
+  canvas.width = Math.floor(Math.min(window.innerWidth, window.innerHeight)/1.2);
+  canvas.height = Math.floor(Math.min(window.innerWidth, window.innerHeight)/1.2);
   r.resizeDrawingSurfaceToCanvas();
 }
 
