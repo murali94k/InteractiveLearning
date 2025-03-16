@@ -23,7 +23,7 @@ const r = new rive.Rive({
         },
 
     });
-
+r.resizeDrawingSurfaceToCanvas();
 function resizeCanvas() {
   canvas.width = Math.floor(Math.min(window.innerWidth, window.innerHeight));
   canvas.height = Math.floor(Math.min(window.innerWidth, window.innerHeight));
