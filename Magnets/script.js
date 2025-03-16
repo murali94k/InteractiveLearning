@@ -1,6 +1,9 @@
 const canvas = document.getElementById('canvas1');
 const ctx = canvas.getContext('2d');
 
+canvas.width = 300;
+canvas.height = 300;
+
 let canvasPosition = canvas.getBoundingClientRect();
 
 console.log(Math.floor(window.innerWidth), Math.floor(window.innerHeight), window.devicePixelRatio);
@@ -16,8 +19,8 @@ const r = new rive.Rive({
     });
 
 function resizeCanvas() {
-  canvas.width = Math.floor(Math.min(window.innerWidth, window.innerHeight)/1.2);
-  canvas.height = Math.floor(Math.min(window.innerWidth, window.innerHeight)/1.2);
+  canvas.width = 300; //Math.floor(Math.min(window.innerWidth, window.innerHeight)/1.2);
+  canvas.height = 300; //Math.floor(Math.min(window.innerWidth, window.innerHeight)/1.2);
   r.resizeDrawingSurfaceToCanvas();
 }
 
