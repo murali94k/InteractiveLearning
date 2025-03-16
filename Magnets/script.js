@@ -3,13 +3,11 @@ const ctx = canvas.getContext('2d');
 
 let canvasPosition = canvas.getBoundingClientRect();
 
-console.log(window.innerWidth/2)
+console.log(window.innerWidth/2, window.innerHeight/2)
 
-const canvasWidth =  Math.min(window.innerWidth/2, window.innerHeight/2) ;
-const canvasHeight =  Math.min(window.innerWidth/2, window.innerHeight/2)
 
-canvas.width = canvasWidth; //500 px
-canvas.height = canvasHeight; // 500 px
+canvas.width = Math.min(window.innerWidth/2, window.innerHeight/2);
+canvas.height = Math.min(window.innerWidth/2, window.innerHeight/2);
 
 const r = new rive.Rive({
         src: "./Assets/nail.riv",
@@ -24,3 +22,13 @@ const r = new rive.Rive({
         },
 
     });
+
+function resizeCanvas() {
+  canvas.width = Math.min(window.innerWidth/2, window.innerHeight/2);
+  canvas.height = Math.min(window.innerWidth/2, window.innerHeight/2);
+  r.resizeDrawingSurfaceToCanvas();
+}
+
+window.addEventListener("resize", resizeCanvas);
+
+resizeCanvas();
