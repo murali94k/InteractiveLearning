@@ -1,19 +1,15 @@
 const canvas = document.getElementById('canvas1');
 const ctx = canvas.getContext('2d');
 
-
-const resetButtonElement = document.getElementById('reset-btn');
-const newButtonElement = document.getElementById('new-btn');
-
-
 let canvasPosition = canvas.getBoundingClientRect();
 
-//
-//const canvasWidth =   window.innerWidth;
-//const canvasHeight =  window.innerHeight;
-//
-//canvas.width = canvasWidth; //600 px
-//canvas.height = canvasHeight; // 300 px
+console.log(window.innerWidth/1.5)
+
+const canvasWidth =  Math.min(window.innerWidth/1.5, window.innerHeight/1.5) ;
+const canvasHeight =  Math.min(window.innerWidth/1.5, window.innerHeight/1.5)
+
+canvas.width = canvasWidth; //500 px
+canvas.height = canvasHeight; // 500 px
 
 const r = new rive.Rive({
         src: "./Assets/nail.riv",
@@ -26,4 +22,5 @@ const r = new rive.Rive({
         onLoad: () => {
           r.resizeDrawingSurfaceToCanvas();
         },
+
     });
